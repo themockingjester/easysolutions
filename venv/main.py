@@ -117,7 +117,7 @@ class uiApp(MDApp):
         self.get_details_using_email = False
         universal_version=None
         self.storage.child('version.txt').download('version.txt')  # download
-        print("h")
+        print("fdh")
         file = open("version.txt","r")
         file_content = file.read()
         print(file_content)
