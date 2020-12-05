@@ -1,4 +1,70 @@
 #:import C kivy.utils.get_color_from_hex
+<SearchresultWindow>:
+
+    BoxLayout:
+
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+
+                rgba :  rgba("#B0B0B0")
+            Rectangle:
+
+                pos: self.pos
+                size:self.size
+
+
+
+
+        BoxLayout:
+            orientation:"vertical"
+            size_hint:(1,0.3)
+            BoxLayout:
+
+                canvas.before:
+                    Color:
+
+                        rgba :  rgba("#282828")
+                    Rectangle:
+
+                        pos: self.pos
+                        size:self.size
+                BoxLayout:
+                    size_hint:(0.1,1)
+                    orientation:"vertical"
+                    BoxLayout:
+                        size_hint:(1,0.4)
+                    BoxLayout:
+                        BoxLayout:
+                            size_hint:(0.1,1)
+                        ImageButton:
+                            source:"resources/icons/back.png"
+                            on_press:app.signupscreen_to_mainscreen()
+                        BoxLayout:
+                            size_hint:(0.1,1)
+                    BoxLayout:
+                        size_hint:(1,0.4)
+                Label:
+                    markup:True
+                    text:"[font=second][color=#ffffff][size=50]Result..[/size][/color][/font]"
+                BoxLayout:
+                    size_hint:(0.1,1)
+            BoxLayout:
+        BoxLayout:
+            size_hint:(1,0.9)
+
+            ScrollView:
+                GridLayout:
+                    id:lay
+                    orientation: "vertical"
+                    size_hint_y: None
+
+                    height: self.minimum_height  #<<<<<<<<<<<<<<<<<<<<
+                    row_default_height: 180
+                    cols:4
+                    padding:20
+                    spacing:20
+
 <SettingsWindow>:
     remove_saved_login:remove_saved_login
     storage_path : storage_path

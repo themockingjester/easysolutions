@@ -1,0 +1,650 @@
+#:import C kivy.utils.get_color_from_hex
+
+
+<UserchoiceWindow>:
+    BoxLayout:
+
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+
+                rgba :  rgba("#B0B0B0")
+            Rectangle:
+
+                pos: self.pos
+                size:self.size
+
+
+
+
+        BoxLayout:
+            orientation:"vertical"
+            size_hint:(1,0.1)
+            BoxLayout:
+
+                canvas.before:
+                    Color:
+
+                        rgba :  rgba("#282828")
+                    Rectangle:
+
+                        pos: self.pos
+                        size:self.size
+
+                Label:
+                    markup:True
+                    text:"[font=second][color=#ffffff][size=100]Ackedmic Server[/size][/color][/font]"
+
+
+
+        BoxLayout:
+            size_hint:(1,1)
+
+            ScrollView:
+                do_scroll_y: True
+                do_scroll_x: False
+                GridLayout:
+
+
+                    orientation: "vertical"
+                    size_hint_y: None
+
+                    height: self.minimum_height  #<<<<<<<<<<<<<<<<<<<<
+                    row_default_height: 580
+                    cols:1
+                    padding:30
+                    spacing:70
+
+                    BoxLayout:
+                        orientation: "vertical"
+
+
+                        BoxLayout:
+                            canvas.before:
+                                Color:
+
+                                    rgba :  rgba("#007c7c")
+                                RoundedRectangle:
+                                    radius: [50]
+
+                                    size: self.size
+                                    pos: self.pos
+                            BoxLayout:
+                                orientation:"vertical"
+                                padding:90
+                                spacing:-60
+                                ImageButton:
+
+                                    source:"resources/icons/verify.png"
+
+                                    on_press:app.userchoicescreen_to_addcontentsscreen()
+                                Label:
+                                    markup:True
+                                    color: C('#000000')
+                                    text:"[font=first][size=60]add contents[/size][/font]"
+
+
+                    BoxLayout:
+                        orientation: "vertical"
+
+                        BoxLayout:
+
+
+                            canvas.before:
+                                Color:
+
+                                    rgba :  rgba("#007c7c")
+                                RoundedRectangle:
+                                    radius: [50]
+                                    size: self.size
+                                    pos: self.pos
+                            BoxLayout:
+                                orientation:"vertical"
+                                padding:90
+                                spacing:-60
+                                ImageButton:
+                                    source:"resources/icons/settings.png"
+
+                                    #on_press:app.userchoicescreen_to_settingsscreen()
+                                Label:
+                                    color: C('#000000')
+                                    markup:True
+                                    text:"[font=first][size=60]settings[/size][/font]"
+
+
+                    BoxLayout:
+                        orientation: "vertical"
+
+                        BoxLayout:
+
+                            canvas.before:
+                                Color:
+
+                                    rgba :  rgba("#007c7c")
+                                RoundedRectangle:
+                                    radius: [50]
+                                    size: self.size
+                                    pos: self.pos
+                            BoxLayout:
+                                orientation: "vertical"
+                                padding:90
+                                spacing:-60
+                                ImageButton:
+                                    source:"resources/icons/logout.png"
+                                    on_press:app.userchoicescreen_to_signinscreen()
+                                Label:
+                                    markup:True
+                                    color: C('#000000')
+                                    text:"[font=first][size=60]sign out[/size][/font]"
+
+
+
+<SigninWindow>:
+    email:email
+    checkbox: checkbox
+    password:password
+    keyring:keyring
+    BoxLayout:
+
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+
+                rgba :  rgba("#B0B0B0")
+            Rectangle:
+
+                pos: self.pos
+                size:self.size
+
+
+
+
+        BoxLayout:
+            orientation:"vertical"
+            size_hint:(1,0.3)
+
+
+            BoxLayout:
+
+                canvas.before:
+                    Color:
+
+                        rgba :  rgba("#282828")
+                    Rectangle:
+
+                        pos: self.pos
+                        size:self.size
+                BoxLayout:
+                    size_hint:(0.1,1)
+                    orientation:"vertical"
+                    BoxLayout:
+                        size_hint:(1,0.4)
+                    BoxLayout:
+                        BoxLayout:
+                            size_hint:(0.1,1)
+                        ImageButton:
+                            source:"resources/icons/back.png"
+                            on_press:app.signinscreen_to_mainscreen()
+                        BoxLayout:
+                            size_hint:(0.1,1)
+                    BoxLayout:
+                        size_hint:(1,0.4)
+                Label:
+                    markup:True
+                    text:"[font=second][color=#ffffff][size=100]Sign In..[/size][/color][/font]"
+                BoxLayout:
+                    size_hint:(0.1,1)
+
+
+
+            BoxLayout:
+
+
+        BoxLayout:
+            BoxLayout:
+                size_hint:(0.1,1)
+            BoxLayout:
+                orientation:"vertical"
+                BoxLayout:
+                    ImageButton:
+                        source:"resources/icons/sign2.png"
+                BoxLayout:
+
+                    orientation:"vertical"
+                    MDTextField:
+                        id:email
+                        hint_text:"enter email"
+
+                    MDTextField:
+                        id:password
+                        password: True
+                        hint_text:"enter password"
+                    MDTextField:
+                        id:keyring
+                        password: True
+                        hint_text:"enter keyring"
+                BoxLayout:
+
+                    size_hint:(1,0.2)
+
+                    Button:
+                        text:"forgot password?"
+                        color:0,0,0,1
+                        background_color:0,0,0,0
+
+
+                BoxLayout:
+                    orientation:"vertical"
+
+
+                    BoxLayout:
+
+                        BoxLayout:
+                            Label:
+                                color:0,0,0,1
+                                text:"Remember me  "
+                                text_size: self.size
+                                halign: 'right'
+                                valign: 'bottom'
+
+                        BoxLayout:
+                            size_hint:(0.1,0.2)
+
+
+                            CheckBox:
+                                id:checkbox
+                                color:0,0,0,1
+                        BoxLayout:
+                            size_hint:(0.6,0.2)
+                    BoxLayout:
+
+
+            BoxLayout:
+                size_hint:(0.1,1)
+        BoxLayout:
+            size_hint:(1,0.3)
+            orientation:"vertical"
+
+            BoxLayout:
+                BoxLayout:
+                MDFillRoundFlatButton:
+                    text:"Done"
+                    on_press:app.clicked_done_at_signinscreen()
+
+                    md_bg_color: app.theme_cls.primary_dark
+                BoxLayout:
+
+            BoxLayout:
+                size_hint:(1,1)
+
+
+
+<MainWindow>:
+
+    BoxLayout:
+
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+
+                rgba :  rgba("#B0B0B0")
+            Rectangle:
+
+                pos: self.pos
+                size:self.size
+
+
+
+
+        BoxLayout:
+            orientation:"vertical"
+            size_hint:(1,0.3)
+            BoxLayout:
+
+                canvas.before:
+                    Color:
+
+                        rgba :  rgba("#282828")
+                    Rectangle:
+
+                        pos: self.pos
+                        size:self.size
+
+                Label:
+                    markup:True
+                    text:"[font=second][color=#ffffff][size=100]Ackedmic Server[/size][/color][/font]"
+            BoxLayout:
+        BoxLayout:
+            BoxLayout:
+                size_hint:(0.2,1)
+
+            BoxLayout:
+
+                MDCard:
+
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                    BoxLayout:
+                        orientation:"vertical"
+                        BoxLayout:
+                            size_hint:(1,0.2)
+                        BoxLayout:
+                            spacing:-140
+                            orientation:"vertical"
+                            ImageButton:
+                                source:"resources/icons/existing_user.png"
+
+                                on_press:app.mainscreen_to_signinscreen()
+                            Label:
+                                color: C('#111111')
+                                text:"login"
+
+                        BoxLayout:
+                            spacing:-140
+                            orientation:"vertical"
+                            ImageButton:
+                                source:"resources/icons/add_user.png"
+                                on_press:app.mainscreen_to_signupscreen()
+                            Label:
+                                color: C('#111111')
+                                text:"sign up"
+                        BoxLayout:
+                            size_hint:(1,0.05)
+            BoxLayout:
+                size_hint:(0.2,1)
+        BoxLayout:
+
+            size_hint:(1,0.3)
+            BoxLayout:
+
+            BoxLayout:
+                BoxLayout:
+                ImageButton:
+                    source:"resources/logo/mylogo2.png"
+
+<Cardforaddcontentsscreen>:
+    contributor_name: contributor_name
+    file_contributor_email: file_contributor_email
+    file_address: file_address
+    date_of_upload:date_of_upload
+    files_before_contribution:files_before_contribution
+    mode: mode
+    money_status:money_status
+    reward_earned: reward_earned
+    transaction_number: transaction_number
+    indicator: indicator
+    BoxLayout:
+
+        BoxLayout:
+            size_hint:(0.2,1)
+        BoxLayout:
+            MDCard:
+                orientation: "vertical"
+                padding: "18dp"
+                ripple_behavior: True
+                elevation:1010
+                ripple_behavior: True
+                #focus_behavior : True
+
+                ImageButtonWithDoubleTouch:
+                    id:indicator
+
+                    source:"resources/icons/notadded.png"
+                MDLabel:
+                    halign: 'justify'
+                    markup:True
+                    color: C('#04d9ff')
+                    text_size: self.size
+                    id:file_address
+                    text:""
+                MDLabel:
+
+                    halign: 'justify'
+                    markup:True
+                    color: C('#04d9ff')
+                    id:file_contributor_email
+                    text:""
+                    text_size: self.size
+                MDLabel:
+                    halign: 'justify'
+                    markup:True
+                    color: C('#04d9ff')
+                    id:date_of_upload
+                    text:""
+                    text_size: self.size
+                MDLabel:
+                    halign: 'justify'
+                    markup:True
+                    color: C('#04d9ff')
+                    id:files_before_contribution
+                    text:""
+                    text_size: self.size
+                MDLabel:
+                    halign: 'justify'
+                    markup:True
+                    color: C('#04d9ff')
+                    id:mode
+                    text:""
+                    text_size: self.size
+                MDLabel:
+                    halign: 'justify'
+                    markup:True
+                    color: C('#04d9ff')
+                    id:money_status
+                    text:""
+                    text_size: self.size
+                MDLabel:
+                    halign: 'justify'
+                    markup:True
+                    color: C('#04d9ff')
+                    id:contributor_name
+                    text:""
+                    text_size: self.size
+                MDLabel:
+                    halign: 'justify'
+                    markup:True
+                    color: C('#04d9ff')
+                    id:reward_earned
+                    text:""
+                    text_size: self.size
+                MDLabel:
+                    halign: 'justify'
+                    markup:True
+                    text_size: self.size
+                    id:transaction_number
+
+                    color: C('#04d9ff')
+                    text:""
+
+                MDFillRoundFlatButton:
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                    text:"Download"
+                    on_release: app.content_for_verification_download(self)
+
+        BoxLayout:
+            size_hint:(0.2,1)
+
+<SignupWindow>:
+    new_user_name : new_user_name
+    new_user_phonenumber: new_user_phonenumber
+    new_user_password: new_user_password
+    new_user_passwordretype: new_user_passwordretype
+    new_user_email: new_user_email
+    BoxLayout:
+
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+
+                rgba :  rgba("#B0B0B0")
+            Rectangle:
+
+                pos: self.pos
+                size:self.size
+
+
+
+
+        BoxLayout:
+            orientation:"vertical"
+            size_hint:(1,0.3)
+            BoxLayout:
+
+                canvas.before:
+                    Color:
+
+                        rgba :  rgba("#282828")
+                    Rectangle:
+
+                        pos: self.pos
+                        size:self.size
+                BoxLayout:
+                    size_hint:(0.1,1)
+                    orientation:"vertical"
+                    BoxLayout:
+                        size_hint:(1,0.4)
+                    BoxLayout:
+                        BoxLayout:
+                            size_hint:(0.1,1)
+                        ImageButton:
+                            source:"resources/icons/back.png"
+                            on_press:app.signupscreen_to_mainscreen()
+                        BoxLayout:
+                            size_hint:(0.1,1)
+                    BoxLayout:
+                        size_hint:(1,0.4)
+                Label:
+                    markup:True
+                    text:"[font=second][color=#ffffff][size=100]Sign Up..[/size][/color][/font]"
+                BoxLayout:
+                    size_hint:(0.1,1)
+            BoxLayout:
+        BoxLayout:
+            BoxLayout:
+                size_hint:(0.1,1)
+            BoxLayout:
+                orientation:"vertical"
+                ImageButton:
+                    source:"resources/icons/new-user.png"
+                MDTextField:
+                    id: new_user_name
+                    hint_text:"enter your name"
+
+                MDTextField:
+                    id:new_user_phonenumber
+                    hint_text:"phone number(with counter code)"
+
+
+                MDTextField:
+                    id:new_user_password
+                    hint_text:"enter password"
+
+                MDTextField:
+                    id:new_user_passwordretype
+                    hint_text:"retype password"
+
+                MDTextField:
+                    id: new_user_email
+                    hint_text:"enter email"
+            BoxLayout:
+                size_hint:(0.1,1)
+        BoxLayout:
+            size_hint:(1,0.3)
+            orientation:"vertical"
+            BoxLayout:
+                size_hint:(1,0.5)
+            BoxLayout:
+                BoxLayout:
+
+
+                MDFillRoundFlatButton:
+                    text:"Done"
+                    on_press:app.clicked_done_at_signupscreen()
+                    md_bg_color: app.theme_cls.primary_dark
+                BoxLayout:
+
+            BoxLayout:
+                size_hint:(1,1)
+<PopupScreen_at_Addcontent>:
+    BoxLayout:
+        orientation:"vertical"
+
+        Label:
+            text: "Are you sure you want to upload this work?"
+            size_hint: 0.6, 0.2
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+        Button:
+            text: "cancel"
+            size_hint: 0.3, 0.04
+            on_press:app.close_popup_at_addcontentscreen_for_confirming_upload()
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+        Button:
+            text:"ok"
+            size_hint: 0.3, 0.04
+            on_press:app.upload_current_files_part2()
+            pos_hint: {"center_x": .5, "center_y": .5}
+<AddcontentsWindow>:
+    result: result
+    BoxLayout:
+
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+
+                rgba :  rgba("#B0B0B0")
+            Rectangle:
+
+                pos: self.pos
+                size:self.size
+
+
+
+
+        BoxLayout:
+            orientation:"vertical"
+
+            BoxLayout:
+                size_hint:(1,0.1)
+
+                canvas.before:
+                    Color:
+
+                        rgba :  rgba("#282828")
+                    Rectangle:
+
+                        pos: self.pos
+                        size:self.size
+
+
+                ImageButton:
+                    size_hint:(0.1,1)
+                    source:"resources/icons/back.png"
+                    on_press:app.addcontentsscreen_to_userchoicescreen()
+
+
+                Label:
+                    markup:True
+                    text:"[font=second][color=#ffffff][size=80]Verify Content..[/size][/color][/font]"
+                MDIconButton:
+                    size_hint:(0.3,1)
+                    icon: 'check-bold'
+                    on_release:app.upload_current_files(self)
+            BoxLayout:
+                size_hint:(1,0.9)
+
+                ScrollView:
+                    do_scroll_y: True
+                    do_scroll_x: False
+                    GridLayout:
+                        id:result
+                        orientation: "vertical"
+                        size_hint_y: None
+
+                        height: self.minimum_height  #<<<<<<<<<<<<<<<<<<<<
+                        row_default_height: 1400
+                        cols:1
+
+
+                        padding:20
+                        spacing:70

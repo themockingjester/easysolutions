@@ -87,6 +87,8 @@ class MyWid(BoxLayout):
     three = ObjectProperty(None)
     four = ObjectProperty(None)
     five = ObjectProperty(None)
+class SearchresultWindow(BoxLayout):
+    pass
 class ShowResult(BoxLayout):
     lay = ObjectProperty(None)
 class SettingsWindow(BoxLayout):
@@ -224,6 +226,12 @@ class uiApp(MDApp):
         screen = Screen(name='settingsscreen')
         screen.add_widget(self.settingsscreen)
         self.screen_manager.add_widget(screen)
+
+        self.searchresultscreen = SearchresultWindow()
+        screen = Screen(name='searchresultscreen')
+        screen.add_widget(self.searchresultscreen)
+        self.screen_manager.add_widget(screen)
+        
         if self.settings_file_contents[0]=="1":
             self.settingsscreen.remove_saved_login.active = True
         else:
@@ -375,21 +383,24 @@ class uiApp(MDApp):
             print(2)
 
             df = pd.read_csv(path_on_local+'main.csv')
+
             # for i in list(df):
             #
             #     # show the list of values
             #     print(df[i].tolist())
             all_files_names = df["path"].tolist()
-            ctr = 1
-            for i in all_files_names:
-                self.storage.child(i).download(path_on_local+'pdf_' + str(ctr) + ".pdf")  # download
-                ctr += 1
-            toast("completely loaded!!")
-            try:
-                os.remove(path_on_local+'main.csv')
-
-            except:
-                toast("couldn't delete download/main.csv")
+            print(all_files_names)
+            self.searchlessonsscreen_to_searchresultscreen()
+            # ctr = 1
+            # for i in all_files_names:
+            #     self.storage.child(i).download(path_on_local+'pdf_' + str(ctr) + ".pdf")  # download
+            #     ctr += 1
+            # toast("completely loaded!!")
+            # try:
+            #     os.remove(path_on_local+'main.csv')
+            #
+            # except:
+            #     toast("couldn't delete download/main.csv")
 
     def clicked_done_at_contributescreen(self):
         publisher = str(self.contributescreen.publisher_name.text)
@@ -643,6 +654,12 @@ class uiApp(MDApp):
             self.rewardsscreen.balance.text = text_
         except:
             toast("user is not added in users_reward database")
+    def searchlessonsscreen_to_searchresultscreen(self):
+        self.screen_manager.transition.direction = 'left'
+        self.screen_manager.current = 'searchresultscreen'
+    def searchresultscreen_to_searchlessonsscreen(self):
+        self.screen_manager.transition.direction = 'right'
+        self.screen_manager.current = 'userchoicescreen'
     def userchoicescreen_to_searchlessonsscreen(self):
         self.screen_manager.transition.direction = 'left'
         self.screen_manager.current = 'searchlessonsscreen'
